@@ -1,0 +1,5 @@
+SELECT emp.FirstName as Employee_FirstName, emp.LastName as Employee_LastName, count(ord.OrderID) as Number_of_Orders 
+FROM [Employees] as emp 
+inner join [Orders] ord on emp.EmployeeID = ord. EmployeeID 
+group by emp.LastName,emp.FirstName 
+order by Number_of_Orders desc limit 10
