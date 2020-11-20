@@ -1,0 +1,8 @@
+SELECT emp.FirstName as Employee_FirstName, emp.LastName as Employee_LastName, sum(ord_det.Quantity) as Sold_Most_Beverages
+FROM [Employees] emp
+inner join [Orders] ord on emp.EmployeeID = ord.EmployeeID
+inner join [OrderDetails] ord_det on ord.OrderID = ord_det.OrderID
+inner join [Products] prod on ord_det.ProductID = prod.ProductID
+inner join [Categories] cat on prod.CategoryID = cat.CategoryID and cat.CategoryName = "Beverages"
+group by emp.LastName,emp.FirstName
+order by Sold_Most_Beverages desc limit 10
